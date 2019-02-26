@@ -18,14 +18,20 @@ public class Folder {
     @Column(name = "title")
     private String tile;
 
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+    private Folder folder;
+
 
 
     private List<File> files;
 
 
-    public Folder(String tile, List<File> files) {
+    public Folder(String tile, Folder folder, List<File> files) {
         this.tile = tile;
+        this.folder = folder;
         this.files = new ArrayList<>();
+
     }
 
     public Folder(){
@@ -47,6 +53,14 @@ public class Folder {
 
     public void setTile(String tile) {
         this.tile = tile;
+    }
+
+    public Folder getFolder() {
+        return folder;
+    }
+
+    public void setFolder(Folder folder) {
+        this.folder = folder;
     }
 
     public List<File> getFiles() {
