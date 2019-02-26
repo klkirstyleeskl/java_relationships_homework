@@ -1,5 +1,7 @@
 package com.example.Homework.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "folders")
     private List<Folder> folders;
 
     public User(String name) {
@@ -42,6 +46,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Folder> getFolders() {
+        return folders;
+    }
+
+    public void setFolders(List<Folder> folders) {
+        this.folders = folders;
     }
 }
 

@@ -1,6 +1,9 @@
 package com.example.Homework.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "files")
@@ -19,6 +22,7 @@ public class File {
 
     @Column(name = "size")
     private int size;
+
 
     public File(String name, String extension, int size) {
         this.name = name;
